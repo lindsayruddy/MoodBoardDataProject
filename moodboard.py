@@ -5,7 +5,9 @@ dataset = pd.read_csv("MoodBoardData.csv")
 
 
 def sort_color(color):
+    # creating a dataframe to add all matching rows to
     color_data = pd.DataFrame(columns = ["Color","ImageLocation"])
+    # so that we dont overwrite the rows when we add to it
     count = 0
     # Here we are iterating through the rows to check if the input color is
     # the color of our dataset row
