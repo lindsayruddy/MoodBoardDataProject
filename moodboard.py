@@ -18,7 +18,7 @@ def sort_color(color):
 
     return color_data
 
-## def sort_lightdark(shade):
+## def sort_shade(shade):
 
 ## def sort_room(room):
 
