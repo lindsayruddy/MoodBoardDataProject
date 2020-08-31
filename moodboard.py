@@ -35,4 +35,10 @@ def write_csvs_with_specs(color):
 
 
 
-write_csvs_with_specs("White")
+def main():
+    color = raw_input("Choose a color: ")
+    write_csvs_with_specs(color)
+
+
+if __name__ == "__main__":
+    main()
