@@ -1,26 +1,22 @@
 import pandas as pd
 import numpy as np
+from IPython.core.display import HTML
+
 
 dataset = pd.read_csv("MoodBoardData.csv")
 
 
 def sort_color(color):
-    # creating a dataframe to add all matching rows to
     color_data = pd.DataFrame(columns = ["Color","ImageLocation"])
-    # so that we dont overwrite the rows when we add to it
     count = 0
-    # Here we are iterating through the rows to check if the input color is
-    # the color of our dataset row
     for index, row in dataset.iterrows():
-        if row['Color'] == color:
-            # we make them all lowercase here so that a user doesnt input a lowercase
-            # that is the same type that still doesnt come up
-            color_data.loc[count] = [row['Color'].lower()] + [row['ImageLocation']]
+        if row['Color'].lower() == color:
+            color_data.loc[count] = [row['Color']] + [row['ImageLocation']]
             count = count + 1
 
     return color_data
 
-## def sort_shade(shade):
+## def sort_lightdark(shade):
 
 ## def sort_room(room):
 
@@ -38,7 +34,7 @@ def write_csvs_with_specs(color):
     # Room
 
     final_data.to_csv("final_data.csv")
-
+    return final_data
 
 
 def main():
@@ -46,6 +42,7 @@ def main():
     color = input("Choose a color: ").lower()
 
     write_csvs_with_specs(color)
+    final = write_csvs_with_specs(color)
 
 
 if __name__ == "__main__":
