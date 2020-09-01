@@ -10,7 +10,7 @@ def sort_color(color):
     color_data = pd.DataFrame(columns = ["Color","ImageLocation"])
     count = 0
     for index, row in dataset.iterrows():
-        if row['Color'] == color:
+        if row['Color'].lower() == color:
             color_data.loc[count] = [row['Color']] + [row['ImageLocation']]
             count = count + 1
 
