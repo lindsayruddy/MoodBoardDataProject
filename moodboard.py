@@ -16,13 +16,28 @@ def sort_color(color):
 
     return color_data
 
-## def sort_lightdark(shade):
+def sort_shade(shade):
+    shade_data = pd.DataFrame(columns = ["Shade", "ImageLocation"])
+    count = 0
+    for index, row in dataset.iterrows():
+        if row['Shade'].lower() == shade:
+            shade_data.loc[count] = [row['Shade']] + [row['ImageLocation']]
+            count = count + 1
 
-## def sort_room(room):
+    return shade_data
+
+def sort_room(room):
+    room_data = pd.DataFrame(columns = ["Room", "ImageLocation"])
+    count = 0
+    for index, row in dataset.iterrows():
+        if row['Room'].lower() == room:
+            room_data.loc[count] = [row['Room']] + [row['ImageLocation']]
+            count = count + 1
+
+    return room_data
 
 
-
-def write_csvs_with_specs(color):
+def write_csvs_with_specs(color, shade, room):
     final_data = pd.DataFrame(columns = ['ImageLocation'])
 
     # Color
@@ -30,8 +45,12 @@ def write_csvs_with_specs(color):
     final_data = pd.concat([color_data,final_data],join='inner')
 
     # Shade
+    shade_data = sort_shade(shade)
+    final_data = pd.concat([shade_data,final_data], join='inner')
 
     # Room
+    room_data = sort_room(room)
+    final_data = pd.concat([room_data,final_data], join='inner')
 
     final_data.to_csv("final_data.csv")
     return final_data
@@ -40,9 +59,10 @@ def write_csvs_with_specs(color):
 def main():
     # we make our input lowercase here too to match above
     color = input("Choose a color: ").lower()
-
-    write_csvs_with_specs(color)
-    final = write_csvs_with_specs(color)
+    shade = input("Choose a shade: ").lower()
+    room = input("Choose a room: "). lower()
+    write_csvs_with_specs(color, shade, room)
+    final = write_csvs_with_specs(color, shade, room)
 
 
 if __name__ == "__main__":
