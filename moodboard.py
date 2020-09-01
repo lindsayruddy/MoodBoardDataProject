@@ -43,7 +43,7 @@ def write_csvs_with_specs(color):
 
 def main():
     # we make our input lowercase here too to match above
-    color = raw_input("Choose a color: ").lower()
+    color = input("Choose a color: ").lower()
 
     write_csvs_with_specs(color)
 
