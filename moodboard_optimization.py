@@ -31,6 +31,10 @@ def write_csvs_with_specs(color, cname, shade, sname, room, rname):
     room_data = sort(room, rname)
     final_data = pd.concat([room_data,final_data], join='inner')
 
+    #If we add a tag, add a line hear calling sort with the input and column name
+    #Update parameters above
+
+    # Final writing of CSV
     final_data.to_csv("final_data.csv")
     return final_data
 
@@ -40,6 +44,9 @@ def main():
     color = input("Choose a color: ").lower()
     shade = input("Choose a shade: ").lower()
     room = input("Choose a room: "). lower()
+    #Ask user for more information here as we add more tags
+
+    #Add these new tags to parameters here
     write_csvs_with_specs(color, "Color", shade, "Shade", room, "Room")
     # final = write_csvs_with_specs(color, shade, room)
 
