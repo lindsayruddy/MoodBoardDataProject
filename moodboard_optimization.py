@@ -11,8 +11,9 @@ def sort(column, name):
     count = 0
     for index, row in dataset.iterrows():
         if row[name].lower() == column:
-            color_data.loc[count] = row['ImageLocation']
-            count += 1
+            data.loc[count] = row['ImageLocation']
+            count = count + 1
+
     return data
 
 def write_csvs_with_specs(color, cname, shade, sname, room, rname):
