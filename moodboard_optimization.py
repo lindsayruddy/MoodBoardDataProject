@@ -35,6 +35,8 @@ def write_csvs_with_specs(color, cname, shade, sname, room, rname):
     #Update parameters above
 
     # Final writing of CSV
+    final_data = final_data.drop_duplicates(subset=['ImageLocation'])
+
     final_data.to_csv("final_data.csv")
     return final_data
 
