@@ -52,6 +52,7 @@ def write_csvs_with_specs(color, shade, room):
     room_data = sort_room(room)
     final_data = pd.concat([room_data,final_data], join='inner')
 
+    final_data = final_data.drop_duplicates(subset=['ImageLocation'])
     final_data.to_csv("final_data.csv")
     return final_data
 
